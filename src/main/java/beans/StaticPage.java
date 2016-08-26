@@ -5,7 +5,14 @@ package beans;
  */
 public class StaticPage {
 
+    private String user_id = "0";
+    private DesignWrapper design;
+    private Connection con = new Connection();
+    private Authentication authentication;
+
     public StaticPage() {
+        this.authentication = new Authentication(this.con);
+        this.design = new DesignWrapper(this.authentication);
     }
 
     public void authorizeAdmin() {
@@ -17,9 +24,20 @@ public class StaticPage {
     }
 
     public String wrapDesign(String content) {
-        return content;
+        //String lastError = this.con.getLastError();
+        //this.con.closeResultset();
+        //this.design.setErrorMessage(lastError);
+        return this.design.getContent(content, false);
     }
 
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 }
 
 
