@@ -15,6 +15,10 @@ public class StaticPage {
         this.design = new DesignWrapper(this.authentication);
     }
 
+    public void authorizeAll() {
+
+    }
+
     public void authorizeAdmin() {
 
     }
