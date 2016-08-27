@@ -1,4 +1,6 @@
-package beans;
+package design;
+
+import database.Authentication;
 
 /**
  * Created by stannisbaratheon on 26/08/16.
@@ -12,7 +14,7 @@ public class DesignWrapper {
     private String user_name = "Guest, please <a href=\"index.jsp?module=login&amp;function=login\">login</a> or <a href=\"index.jsp?module=login&amp;function=register\">register</a>";
     private Authentication authentication;
 
-   public DesignWrapper(Authentication auth) {
+    public DesignWrapper(Authentication auth) {
         this.authentication = auth;
     }
 
@@ -40,15 +42,40 @@ public class DesignWrapper {
         return this.content;
     }
 
-        private String generateMenu() {
+    public void setTitel(String titel) {
+        this.titel = this.titel + titel;
+    }
+
+
+    private String generateMenu() {
         String menu = "";
         menu = menu + "<div id=\"menu\"><a href=\"index.jsp\">Home</a> | <a href=\"index.jsp?module=pages&amp;function=about\">About</a> | <a href=\"index.jsp?module=programming&amp;function=list\">Movie Schedule</a>";
-        if(this.authentication.isAdmin()) {
+        if (this.authentication.isAdmin()) {
             menu = menu + " | <a href=\"index.jsp?module=administration\">Administration</a>";
         }
 
         menu = menu + "</div>";
         return menu;
+    }
+
+    public void setErrorMessage(String error_message) {
+        this.error_message = this.error_message + error_message;
+    }
+
+
+    public void setUserName(String user_name) {
+        if (!user_name.equals("")) {
+            this.user_name = user_name + ", <a href=\"index.jsp?module=login&amp;function=logout\">logout</a>";
+        }
+
+    }
+
+    public void setAccess(boolean access) {
+        this.access = access;
+    }
+
+    public void setAuthentication(Authentication authentication) {
+        this.authentication = authentication;
     }
 
 }
@@ -92,25 +119,3 @@ public class DesignWrapper {
 //        return this.content;
 //    }
 //
-//    public void setErrorMessage(String error_message) {
-//        this.error_message = this.error_message + error_message;
-//    }
-//
-//    public void setTitel(String titel) {
-//        this.titel = this.titel + titel;
-//    }
-//
-//    public void setUserName(String user_name) {
-//        if(!user_name.equals("")) {
-//            this.user_name = user_name + ", <a href=\"index.jsp?module=login&amp;function=logout\">logout</a>";
-//        }
-//
-//    }
-//
-//    public void setAccess(boolean access) {
-//        this.access = access;
-//    }
-//
-//    public void setAuthentication(Authentication authentication) {
-//        this.authentication = authentication;
-//    }

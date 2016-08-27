@@ -8,7 +8,7 @@
 	if(User.loginUser())
 	{
 		
-		String userId = User.getCache_id();
+		String userId = User.getLoginUser_id();
 		
 		if (userId == null)
 			userId = "" ;
